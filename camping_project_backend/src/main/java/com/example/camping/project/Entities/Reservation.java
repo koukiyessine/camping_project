@@ -17,7 +17,7 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_reservation;
 
-    @Column(nullable = false)
+/*     @Column(nullable = false)
     private Time duree;
-    
+     */
 }
