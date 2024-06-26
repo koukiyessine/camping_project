@@ -63,6 +63,4 @@ public class Activitecontroller {
 
         return actserv.getallActivitebynom(ch);
         }
-        
-
 }
