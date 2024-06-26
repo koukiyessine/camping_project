@@ -27,11 +27,11 @@ public class Activitecontroller {
     Activiteservice actserv;
 
 
-/*        @PostMapping("/addActivite")
+        @PostMapping("/addActivite")
         public ResponseEntity<Activite> addActivite(@Valid @RequestBody Activite A) {
           Activite activ = actserv.addActivite(A);
           return new ResponseEntity<>(activ,HttpStatus.OK);
-        }   */
+        }   
         
         @PutMapping("/updateActivite/{id}")
         public Activite updateActivite(@Valid @RequestBody Activite activ,@PathVariable("id") int id_activite) {
