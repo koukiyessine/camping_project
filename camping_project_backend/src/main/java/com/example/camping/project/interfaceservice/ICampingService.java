@@ -14,6 +14,7 @@ public interface ICampingService {
 
     public List<Camping> getallCamping();
 
-/*     public List<Camping> getallCampingbynom(String ch);
- */
+    public List<Camping> getallcampingbydestination(String ch);
+
+ 
 }

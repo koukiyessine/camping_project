@@ -33,11 +33,11 @@ CampingRepository campRepo;
         if(id_camping==0){
             System.out.println("cette id ni pas existe !");
         }else {
-        camp.setNom(camp.getNom());
         camp.setStatus(camp.getStatus());
         camp.setDescription(camp.getDescription());
-        camp.setAge(camp.getAge());
-        camp.setBudget(camp.getBudget());
+        camp.setDestination(camp.getDestination());
+        camp.setPrixCamping(camp.getPrixCamping());
+        camp.setSeason(camp.getSeason());
         campRepo.save(camp);
     }
         return camp;
@@ -49,9 +49,12 @@ CampingRepository campRepo;
         return (List<Camping>) campRepo.findAll();
     }
 
-/*         @Override
-    public List<Camping> getallCampingbybudget(String ch) {
-        return campRepo.findBybudget(ch);
-    } */
+        @Override
+        public List<Camping> getallcampingbydestination(String ch) {
+         return campRepo.findBydestination(ch);
+        }
+
+
+
 
 }

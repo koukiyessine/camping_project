@@ -11,8 +11,6 @@ import com.example.camping.project.Entities.Camping;
 @Repository
 public interface CampingRepository extends CrudRepository<Camping, Integer>{
 
-    List<Camping> findBynom(String ch);
-
-    List<Camping> findBybudget(String ch);
+    List<Camping> findBydestination(String ch) ;
     
 }

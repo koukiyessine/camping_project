@@ -40,8 +40,9 @@ public class CampingController {
       return campServ.getallCamping() ;
     }
      
-/*     @GetMapping("/getallCampingbynom/{ch}")
-    public List<Camping> getallCampingbynom(@PathVariable String ch) {
-         return campServ.getallCampingbynom(ch);
-    } */
+ 
+     @GetMapping("/getallcampingbydestination/{ch}")
+        public List<Camping> getallcampingbydestination(String ch) {
+       return campServ.getallcampingbydestination(ch);
+} 
 }

@@ -26,7 +26,7 @@ public class Guide {
     @Size(min = 5, max = 10)
     private String nom;
     @Column(nullable = false, unique = true)
-    @Size(min = 5, max = 10)
+    @Size(min = 5, max = 40)
     private String specialite;
     @Column(nullable = false, unique = true)
     @Size(min = 5, max = 10)

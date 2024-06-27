@@ -1,12 +1,14 @@
 package com.example.camping.project.Entities;
 
-import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -17,7 +19,13 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_reservation;
 
-/*     @Column(nullable = false)
-    private Time duree;
-     */
+    @Column(nullable = false, unique = true)
+    @Size(min = 5, max = 200)
+    private String budget;
+
+    @Column(nullable = false, unique = true)
+    @Max(45)
+    @NotNull
+    private int age;
+     
 }
