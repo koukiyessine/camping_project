@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,13 +25,16 @@ import lombok.ToString;
 @ToString
 public class Avis {
 
+    @ManyToOne
+    private Camping camping;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_avis;
-    
+
     @Column(nullable = false, unique = true)
     @Size(min = 5, max = 200)
-    
+
     private String nom;
     @Column(nullable = false, unique = true)
     @Size(min = 5, max = 200)
@@ -39,5 +43,5 @@ public class Avis {
     @Column(nullable = false, unique = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
-    
+
 }
