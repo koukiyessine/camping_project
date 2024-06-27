@@ -35,5 +35,10 @@ public class CampingController {
             public void deleteCamping(@PathVariable Camping c) {
               campserv.deleteCamping(c);
             }
+
+            @GetMapping("/getallCampingbydestination/{ch}")
+            public List<Camping> getallCampingbydestination(@PathVariable String ch) {
+               return campserv.getallCampingbydestination(ch) ;
+            }
     }
 

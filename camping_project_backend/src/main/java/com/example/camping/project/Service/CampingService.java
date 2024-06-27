@@ -10,7 +10,7 @@ import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.ICampingService;
 
 @Service
-public class CampingService implements ICampingService{
+public class CampingService implements ICampingService {
 
     @Autowired
     CampingRepository camprepo;
@@ -24,11 +24,14 @@ public class CampingService implements ICampingService{
     public List<Camping> getallCamping() {
         return (List<Camping>) camprepo.findAll();
     }
-    
 
-    
+    @Override
+    public List<Camping> getallCampingbydestination(String ch) {
+        return camprepo.findBydestinationStartingWith(ch);
+    }
+
     @Override
     public void deleteCamping(Camping c) {
-       camprepo.delete(c);
+        camprepo.delete(c);
     }
 }
