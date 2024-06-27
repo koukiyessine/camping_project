@@ -25,30 +25,29 @@ public class Camping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCamping;
+    private int id_camping;
 
     @Column(nullable = false, unique = true)
     @Size(min = 5, max = 200)
 
     private String destination;
-
     @Column(nullable = false, unique = true)
-    @Size(min = 5, max = 200)
+    @Size(min = 5, max = 2000)
+
     private String description;
-
     @Column(nullable = false, unique = true)
+    private String prixCamping;
+    
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private Date dateDebut;
-
-
     @Column(nullable = false, unique = true)
-    @Size(min = 5, max = 200)
+    @Size(min = 5, max = 40)
+
     private String status;
-
-    private double prixCamping;
-
-    @Column(nullable = false, unique = true)
-    @Size(min = 5, max = 200)
+    @Column(nullable = false)
+    @Size(min = 5, max = 40)
     private String season;
 
 }
