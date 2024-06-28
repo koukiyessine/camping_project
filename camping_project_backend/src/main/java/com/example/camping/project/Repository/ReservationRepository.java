@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.camping.project.Entities.Reservation;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Integer>{    
+public interface ReservationRepository extends CrudRepository<Reservation, Integer>{
+
 }
