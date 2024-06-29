@@ -26,17 +26,8 @@ public class ReservationService implements IReservationService {
     @Autowired
     CampingRepository camprepo;
 
-    public Reservation addreservation(Reservation rsv, int id_user, int id_camping) {
+    public Reservation addreservation(Reservation rsv) {
 
-        User user = userep.findById(id_user).get();
-        Camping camp = camprepo.findById(id_camping).get();
-
-        rsv.setUser(user);
-        rsv.setUser(user);
-        rsv.setCamping(camp);
-        rsv.setCamping(camp);
-        rsv.setAge(rsv.getAge());
-        rsv.setBudget(rsv.getBudget());
 
         return reservrepo.save(rsv);
 

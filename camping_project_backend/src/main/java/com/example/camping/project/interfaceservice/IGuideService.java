@@ -6,7 +6,7 @@ import com.example.camping.project.Entities.Guide;
 
 public interface IGuideService {
 
-    public Guide addGuide(Guide g , int id_camping) ;
+    public Guide addGuide(Guide g) ;
 
     public List<Guide> getallGuide();
 

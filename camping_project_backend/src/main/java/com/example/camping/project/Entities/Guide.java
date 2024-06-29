@@ -1,16 +1,21 @@
 package com.example.camping.project.Entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @AllArgsConstructor
@@ -19,10 +24,8 @@ import lombok.Setter;
 @Setter
 public class Guide {
 
-
-  @ManyToOne
-  @JoinColumn(name = "id_camping")
-  private Camping camping;
+    @OneToMany(mappedBy = "guide", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Camping> listCamping;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +39,6 @@ public class Guide {
 
     @Size(min = 3, max = 10)
     private String ville;
-          
-    private long prix_guide ;
 
+    private long prix_guide;
 }

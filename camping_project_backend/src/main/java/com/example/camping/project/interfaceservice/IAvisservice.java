@@ -6,7 +6,7 @@ import com.example.camping.project.Entities.Avis;
 
 public interface IAvisservice {
 
-        public Avis addavis(Avis a , int id_camping) ;
+        public Avis addavis(Avis a ) ;
 
         public List<Avis> getallavis();
 

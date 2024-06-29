@@ -20,15 +20,13 @@ import lombok.Data;
 public class Reservation {
 
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Paiement> listPaiement;
+    private List<Camping> listCamping;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "id_camping")
-    private Camping camping;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

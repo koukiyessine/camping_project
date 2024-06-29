@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.camping.project.Entities.MoyenTransport;
 import com.example.camping.project.Service.MoyenTransportService;
 
-import jakarta.websocket.server.PathParam;
 
 @Controller
 @RestController
@@ -21,8 +20,8 @@ public class MoyenTransportController {
     MoyenTransportService moyentransserv;
            
          @PostMapping("/addMoyenTransport")
-         public MoyenTransport addMoyenTransport(@RequestBody MoyenTransport mt,@PathParam("id") int id) {
-            return moyentransserv.addMoyenTransport(mt, id);
+         public MoyenTransport addMoyenTransport(@RequestBody MoyenTransport mt) {
+            return moyentransserv.addMoyenTransport(mt);
         }  
         
          @DeleteMapping("/deleteMoyenTransport/{mt}")

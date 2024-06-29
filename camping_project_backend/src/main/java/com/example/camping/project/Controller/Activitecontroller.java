@@ -25,8 +25,8 @@ public class Activitecontroller {
   Activiteservice actserv;
 
   @PostMapping("/addActivite")
-  public Activite addActivite(@RequestBody Activite A, @RequestParam("id_camping") int id_camping) {
-    return actserv.addActivite(A, id_camping);
+  public Activite addActivite(@RequestBody Activite A) {
+    return actserv.addActivite(A);
   }
 
   @PutMapping("/updateActivite/{id}")

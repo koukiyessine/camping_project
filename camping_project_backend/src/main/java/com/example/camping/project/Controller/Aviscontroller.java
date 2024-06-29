@@ -23,8 +23,8 @@ public class Aviscontroller {
   Avisservice avisserv;
 
   @PostMapping("/addavis")
-  public Avis addavis(@RequestBody Avis a ,@RequestParam int id_camping) {
-    return avisserv.addavis(a, id_camping) ;
+  public Avis addavis(@RequestBody Avis a ) {
+    return avisserv.addavis(a) ;
   }
 
   @GetMapping("/getallavis")

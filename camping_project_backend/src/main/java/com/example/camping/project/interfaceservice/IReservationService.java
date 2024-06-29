@@ -6,7 +6,7 @@ import com.example.camping.project.Entities.Reservation;
 
 public interface IReservationService {
 
-        public Reservation addreservation(Reservation rsv, int id_user, int id_camping);
+        public Reservation addreservation(Reservation rsv);
 
         public List<Reservation> getallreservation(Reservation reserv);
 

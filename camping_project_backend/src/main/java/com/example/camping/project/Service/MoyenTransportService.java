@@ -3,7 +3,6 @@ package com.example.camping.project.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Entities.MoyenTransport;
 import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.Repository.MoyenTransportRepository;
@@ -19,11 +18,8 @@ public class MoyenTransportService implements IMoyenTransportService {
     CampingRepository camprepo;
 
     @Override
-    public MoyenTransport addMoyenTransport(MoyenTransport mt, int id) {
+    public MoyenTransport addMoyenTransport(MoyenTransport mt) {
 
-        Camping camp = camprepo.findById(id).get();
-
-        mt.setCamping(camp);
         return moyentransrep.save(mt);
     }
 

@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Entities.Guide;
-import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.Repository.GuideRepository;
 import com.example.camping.project.interfaceservice.IGuideService;
 
@@ -17,13 +15,10 @@ public class GuideService implements IGuideService {
     @Autowired
     GuideRepository guiderepo;
 
-    @Autowired
-    CampingRepository camprepo;
+
 
     @Override
-    public Guide addGuide(Guide g , int id_camping) {
-        Camping camp=camprepo.findById(id_camping).get();
-        g.setCamping(camp);
+    public Guide addGuide(Guide g ) {
         return guiderepo.save(g);
     }
 

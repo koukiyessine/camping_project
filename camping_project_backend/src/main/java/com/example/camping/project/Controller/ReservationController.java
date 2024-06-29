@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +23,8 @@ public class ReservationController {
     ReservationService reservserv;
 
         @PostMapping("/addreservation/{idu}/{idc}")
-        public Reservation addreservation(@RequestBody Reservation rsv ,@PathVariable("idu") int id_user ,
-        @PathVariable("idc") int id_camping){
-            return reservserv.addreservation(rsv, id_user, id_camping) ;
+        public Reservation addreservation(@RequestBody Reservation rsv){
+            return reservserv.addreservation(rsv) ;
         }
 
         @GetMapping("/getallreservation")

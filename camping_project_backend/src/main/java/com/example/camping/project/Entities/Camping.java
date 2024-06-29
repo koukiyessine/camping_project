@@ -11,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -25,21 +27,25 @@ import lombok.Setter;
 @Setter
 public class Camping {
 
-    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reservation> listReservation;
+    @ManyToOne
+    @JoinColumn(name = "id_guide")
+    private Guide guide;
 
-    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Activite> listActivite;
+    @ManyToOne
+    @JoinColumn(name = "id_Avis")
+    private Avis avis;
 
-    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Avis> listAvis;
+    @ManyToOne
+    @JoinColumn(name = "id_reservation")
+    private Reservation reservation;
 
-    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MoyenTransport> listMoyenTransport;
+    @ManyToOne
+    @JoinColumn(name = "id_activite")
+    private Activite activite;
 
-
-    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Guide> listGuide;
+    @ManyToOne
+    @JoinColumn(name = "id_mtrans")
+    private MoyenTransport moyenTransport;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

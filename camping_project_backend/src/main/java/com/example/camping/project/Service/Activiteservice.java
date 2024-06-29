@@ -5,7 +5,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.example.camping.project.Entities.Activite;
-import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Repository.ActiviteRepository;
 import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.IActiviteservice;
@@ -29,10 +28,7 @@ public class Activiteservice implements IActiviteservice{
     }
 
     @Override
-    public  Activite addActivite(Activite A , int id_camping) {
-
-        Camping camp=camprepo.findById(id_camping).get() ;
-        A.setCamping(camp);
+    public  Activite addActivite(Activite A) {
         return actrep.save(A);
     }
 

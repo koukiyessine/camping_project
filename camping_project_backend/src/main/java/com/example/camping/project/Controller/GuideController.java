@@ -24,8 +24,8 @@ public class GuideController {
     GuideService guideserv;
 
     @PostMapping("/addGuide")
-    public Guide addGuide(@RequestBody Guide g ,@PathParam("id_camping")  int id_camping) {
-        return guideserv.addGuide(g,id_camping);
+    public Guide addGuide(@RequestBody Guide g ) {
+        return guideserv.addGuide(g);
     }
 
     @GetMapping("/getallGuide")

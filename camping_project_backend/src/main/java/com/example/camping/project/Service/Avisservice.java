@@ -3,7 +3,6 @@ package com.example.camping.project.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.camping.project.Entities.Avis;
-import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Repository.AvisRepository;
 import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.IAvisservice;
@@ -19,9 +18,8 @@ public class Avisservice implements IAvisservice {
     CampingRepository camprepo;
 
     @Override
-    public Avis addavis(Avis a , int id_camping) {
-        Camping camping= camprepo.findById(id_camping).get();   
-        a.setCamping(camping);
+    public Avis addavis(Avis a) {
+     
         return avisrepo.save(a);
     }
 
