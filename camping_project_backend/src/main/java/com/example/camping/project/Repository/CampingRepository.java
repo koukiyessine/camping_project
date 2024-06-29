@@ -11,4 +11,5 @@ import com.example.camping.project.Entities.Camping;
 public interface CampingRepository extends CrudRepository<Camping, Integer> {
 
     List<Camping> findBydestinationStartingWith(String ch);
+
 }

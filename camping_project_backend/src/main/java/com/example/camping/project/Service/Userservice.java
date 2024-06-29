@@ -17,6 +17,8 @@ public class Userservice implements IUserservice {
     @Autowired
     UserRepository userrep;
 
+
+
     @Override
     public User adduser(@Valid User u) {
        return userrep.save(u);
@@ -73,5 +75,6 @@ public class Userservice implements IUserservice {
     public List<User> getalluserbyname(String ch) {
       return userrep.findBynom(ch);
     }
-    
+
+
 }

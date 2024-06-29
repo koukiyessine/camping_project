@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.camping.project.Entities.Camping;
@@ -40,5 +41,12 @@ public class CampingController {
             public List<Camping> getallCampingbydestination(@PathVariable String ch) {
                return campserv.getallCampingbydestination(ch) ;
             }
+
+
+            @PostMapping("/addusercamping")
+            public Camping addusercamping(@RequestBody Camping cp , @RequestParam("id") int id_user){
+               return campserv.addusercamping(cp, id_user);
+            }
+
     }
 

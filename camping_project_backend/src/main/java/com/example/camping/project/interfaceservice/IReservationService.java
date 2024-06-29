@@ -14,6 +14,8 @@ public interface IReservationService {
 
         public void deleteReservation(Reservation reserv) ;
 
+        public List<String> getAllDestinationByBudget(int budget) ;
+
 
 
 }

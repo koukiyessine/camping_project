@@ -1,5 +1,6 @@
 package com.example.camping.project.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ import com.example.camping.project.Repository.UserRepository;
 import com.example.camping.project.interfaceservice.IReservationService;
 
 @Service
-public class ReservationService implements IReservationService{
-    
+public class ReservationService implements IReservationService {
+
     @Autowired
     ReservationRepository reservrepo;
 
@@ -25,12 +26,11 @@ public class ReservationService implements IReservationService{
     @Autowired
     CampingRepository camprepo;
 
+    public Reservation addreservation(Reservation rsv, int id_user, int id_camping) {
 
-    public Reservation addreservation(Reservation rsv , int id_user , int id_camping){
-        
-        User user=userep.findById(id_user).get();
-        Camping camp=camprepo.findById(id_camping).get();
-        
+        User user = userep.findById(id_user).get();
+        Camping camp = camprepo.findById(id_camping).get();
+
         rsv.setUser(user);
         rsv.setUser(user);
         rsv.setCamping(camp);
@@ -38,22 +38,36 @@ public class ReservationService implements IReservationService{
         rsv.setAge(rsv.getAge());
         rsv.setBudget(rsv.getBudget());
 
-        return reservrepo.save(rsv) ;
+        return reservrepo.save(rsv);
 
     }
 
-
-
-    public List<Reservation> getallreservation(Reservation reserv){
+    public List<Reservation> getallreservation(Reservation reserv) {
         return (List<Reservation>) reservrepo.findAll();
     }
 
-    public int getnumdepersonnerservi(){
+    public int getnumdepersonnerservi() {
         return (int) reservrepo.count();
     }
 
-      public void deleteReservation(Reservation reserv){
+    public void deleteReservation(Reservation reserv) {
         reservrepo.delete(reserv);
-      }
+    }
+
+    public List<String> getAllDestinationByBudget(int budget) {
+        List<String> destinations = new ArrayList<>();
+        List<Camping> allCampings = (List<Camping>) camprepo.findAll(); // Récupérer tous les campings depuis le
+                                                                        // repository
+        for (Camping camp : allCampings) {
+            if (budget == Integer.parseInt(camp.getPrixCamping()) || budget < Integer.parseInt(camp.getPrixCamping())) {
+                destinations.add(camp.getDestination());
+                destinations.add(camp.getPrixCamping());
+                destinations.add(camp.getDescription());
+                destinations.add(camp.getStatus()) ;
+            }
+        }
+
+        return destinations;
+    }
 
 }

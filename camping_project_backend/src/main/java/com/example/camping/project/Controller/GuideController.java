@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.camping.project.Entities.Guide;
 import com.example.camping.project.Service.GuideService;
 
+import jakarta.websocket.server.PathParam;
+
 @Controller
 @RestController
 public class GuideController {
@@ -22,8 +24,8 @@ public class GuideController {
     GuideService guideserv;
 
     @PostMapping("/addGuide")
-    public Guide addGuide(@RequestBody Guide g) {
-        return guideserv.addGuide(g);
+    public Guide addGuide(@RequestBody Guide g ,@PathParam("id_camping")  int id_camping) {
+        return guideserv.addGuide(g,id_camping);
     }
 
     @GetMapping("/getallGuide")

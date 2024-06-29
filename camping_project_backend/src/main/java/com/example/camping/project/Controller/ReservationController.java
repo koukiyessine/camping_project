@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.camping.project.Entities.Reservation;
@@ -44,6 +45,10 @@ public class ReservationController {
        public void deleteReservation(Reservation reserv){
           reservserv.deleteReservation(reserv);
         }
- 
+
+        @GetMapping("/getalldestinationbybudget")
+        public List<String> getAllDestinationByBudget(@RequestParam int budget) {
+            return reservserv.getAllDestinationByBudget(budget);
+        } 
     }
     

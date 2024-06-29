@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -18,8 +19,10 @@ import lombok.Setter;
 @Setter
 public class Guide {
 
-    @ManyToOne
-    private Camping camping;
+
+  @ManyToOne
+  @JoinColumn(name = "id_camping")
+  private Camping camping;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +36,7 @@ public class Guide {
 
     @Size(min = 3, max = 10)
     private String ville;
+          
+    private long prix_guide ;
+
 }

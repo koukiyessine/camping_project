@@ -5,7 +5,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.example.camping.project.Entities.Activite;
+import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Repository.ActiviteRepository;
+import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.IActiviteservice;
 
 import jakarta.transaction.Transactional;
@@ -15,6 +17,9 @@ public class Activiteservice implements IActiviteservice{
     
     @Autowired
     ActiviteRepository actrep;
+
+        @Autowired
+    CampingRepository camprepo;
   
     @Autowired
     FilesStorageService filesStorageService;
@@ -24,7 +29,10 @@ public class Activiteservice implements IActiviteservice{
     }
 
     @Override
-    public  Activite addActivite(Activite A) {
+    public  Activite addActivite(Activite A , int id_camping) {
+
+        Camping camp=camprepo.findById(id_camping).get() ;
+        A.setCamping(camp);
         return actrep.save(A);
     }
 
@@ -45,11 +53,11 @@ public class Activiteservice implements IActiviteservice{
         }
 
 
-/*         @Override
+         @Override
         public void deleteActivite(Activite a) {
             actrep.delete(a);
         }
- */
+ 
 
         @Override
         public List<Activite> getallActivite() {
@@ -69,7 +77,7 @@ public class Activiteservice implements IActiviteservice{
     // the deleteContact method executes all its operations (checking for the contact, deleting the file, 
     //and deleting the contact record) within a single transaction.If any part of this process fails, 
     //the entire transaction will be rolled back, maintaining data consistency and integrity. 
-    public void deleteActivite(int id) {
+    public void deleteActivitefile(int id) {
         // Check if the ID is null and throw an IllegalArgumentException if it is
         if (id == 0) {
             throw new IllegalArgumentException("ID cannot be null");
