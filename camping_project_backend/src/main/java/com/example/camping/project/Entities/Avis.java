@@ -34,7 +34,7 @@ public class Avis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_avis;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     @Size(min = 5, max = 200)
 
     private String nom;
@@ -42,7 +42,7 @@ public class Avis {
     @Size(min = 5, max = 200)
     private String contenu;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 

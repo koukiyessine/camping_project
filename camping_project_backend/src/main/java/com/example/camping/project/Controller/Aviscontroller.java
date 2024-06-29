@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.example.camping.project.Entities.Avis;
@@ -22,8 +23,8 @@ public class Aviscontroller {
   Avisservice avisserv;
 
   @PostMapping("/addavis")
-  public Avis addavis(@RequestBody Avis a) {
-    return avisserv.addavis(a);
+  public Avis addavis(@RequestBody Avis a ,@RequestParam int id_camping) {
+    return avisserv.addavis(a, id_camping) ;
   }
 
   @GetMapping("/getallavis")
