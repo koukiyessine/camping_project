@@ -30,8 +30,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> listReservation;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Camping> listCamping;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

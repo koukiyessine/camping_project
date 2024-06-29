@@ -14,7 +14,6 @@ public interface ICampingService {
 
         public List<Camping> getallCampingbydestination(String ch);
 
-        public Camping addusercamping(Camping cp, int id_user) ;
 
 
 }

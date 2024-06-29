@@ -43,10 +43,10 @@ public class CampingController {
             }
 
 
-            @PostMapping("/addusercamping")
+/*             @PostMapping("/addusercamping")
             public Camping addusercamping(@RequestBody Camping cp , @RequestParam("id") int id_user){
                return campserv.addusercamping(cp, id_user);
-            }
+            } */
 
     }
 
