@@ -1,6 +1,12 @@
 package com.example.camping.project.Entities;
 
+
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,10 +23,17 @@ import lombok.Data;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reservation {
 
+
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Camping> listCamping;
+       @JsonIgnore
+    private List<Paiement> listPaiement;
+ 
+    @ManyToOne
+    @JoinColumn(name = "id_camping")
+    private Camping camping;
 
     @ManyToOne
     @JoinColumn(name = "id_user")

@@ -14,5 +14,6 @@ public interface IUserservice {
     public void deleteuser(User u);
     public List <User> getallUser();
     public List <User> getalluserbyname(String ch); 
+    public int getnombreuserdispo() ;
 
 }

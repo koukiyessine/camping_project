@@ -57,4 +57,9 @@ Userservice userserv;
     public List<User> getalluserbyname(@PathVariable String ch) {
       return userserv.getalluserbyname(ch);
     }
+
+    @GetMapping("/getnombreuserdispo")
+    public int getnombreuserdispo(){
+     return userserv.getnombreuserdispo() ;
+    }
 }

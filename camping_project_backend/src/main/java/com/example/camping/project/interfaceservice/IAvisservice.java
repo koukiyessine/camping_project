@@ -13,5 +13,7 @@ public interface IAvisservice {
         public void deleteAvis(Avis A);
 
         public Avis updateAvis(Avis Avis, int id_avis);
+            
+        public int getnombreAvisdispo() ;
 
 }

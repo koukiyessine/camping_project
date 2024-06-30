@@ -12,6 +12,8 @@ public interface ActiviteRepository extends CrudRepository<Activite, Integer>{
 
     List<Activite> findBynom(String ch);
 
+    List<Activite> findBynomStartingWith(String ch);
+
 
 /*     Activite getActiviteByid_activite(int id); */
 

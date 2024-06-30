@@ -16,7 +16,6 @@ import com.example.camping.project.Service.Activiteservice;
 
 import jakarta.validation.Valid;
 
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class Activitecontroller {
@@ -49,12 +48,15 @@ public class Activitecontroller {
     return actserv.getallActivite();
   }
 
-  @GetMapping("/getallActivitebynom")
-  public List<Activite> getallActivitebynom(@RequestParam String ch) {
-    if (ch.isEmpty()) {
-      System.out.println("la variable de nom donneer est vide !");
-    }
+  @GetMapping("/getallActivitebynom/{ch}")
+  public String  getallActivitebynom(@PathVariable("ch") String ch) {
 
     return actserv.getallActivitebynom(ch);
   }
+
+  @GetMapping("/getnombreActivitedispo")
+  public int getnombreActivitedispo(){
+   return actserv.getnombreActivitedispo() ;
+}
+
 }

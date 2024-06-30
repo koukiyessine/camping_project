@@ -1,5 +1,6 @@
 package com.example.camping.project.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,24 +48,22 @@ public class CampingService implements ICampingService {
     ActiviteRepository actrep;
 
     @Override
-    public Camping addCamping(Camping c,int id_Avis ,int id_guide,int id_reservation,int id_activite,
+    public Camping addCamping(Camping c,int id_Avis ,int id_guide,int id_activite,
     int id_mtrans,int id_user) {
 
-    Reservation reservation = reservrepo.findById(id_reservation).get();
     Guide guide = guiderepo.findById(id_guide).get();
     MoyenTransport moyenTransport = moyentransrep.findById(id_mtrans).get();
     Activite activite = actrep.findById(id_activite).get();
     User user = userep.findById(id_user).get() ;
     Avis avis = avisrepo.findById(id_Avis).get() ;
 
-
+    
     c.setActivite(activite);
     c.setAvis(avis);
     c.setGuide(guide);
-    c.setReservation(reservation);
     c.setActivite(activite);
     c.setMoyenTransport(moyenTransport);
-
+    c.setUser(user);
         return camprepo.save(c);
     }
 
@@ -74,12 +73,27 @@ public class CampingService implements ICampingService {
     }
 
     @Override
-    public List<Camping> getallCampingbydestination(String ch) {
-        return camprepo.findBydestinationStartingWith(ch);
+    public String getAllCampingByDestination(String ch) {
+        StringBuilder ch1 = new StringBuilder();  // Initialisation de StringBuilder
+        List<Camping> campings = camprepo.findBydestinationStartingWith(ch);  // Trouver les campings dont la destination commence par `ch`
+        
+        for (Camping camping : campings) {
+        ch1.append(camping.getDestination()).append("\n");  // Concaténer chaque destination séparée par une virgule et un espace
+        }
+    
+    
+        return ch1.toString();  // Retourner la chaîne de caractères
     }
+    
 
     @Override
     public void deleteCamping(Camping c) {
         camprepo.delete(c);
     }
+
+    @Override
+    public int getnombreCampingdispo(){
+       return (int) camprepo.count();
+    }
+
 }

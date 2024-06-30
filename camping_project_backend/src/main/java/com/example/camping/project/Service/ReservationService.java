@@ -26,9 +26,13 @@ public class ReservationService implements IReservationService {
     @Autowired
     CampingRepository camprepo;
 
-    public Reservation addreservation(Reservation rsv) {
+    public Reservation addreservation(Reservation rsv, int id_user, int id_camping) {
 
+        User user = userep.findById(id_user).get();
+        Camping camp = camprepo.findById(id_camping).get();
 
+        rsv.setUser(user);
+        rsv.setCamping(camp);
         return reservrepo.save(rsv);
 
     }
@@ -45,19 +49,23 @@ public class ReservationService implements IReservationService {
         reservrepo.delete(reserv);
     }
 
-    public List<String> getAllDestinationByBudget(int budget) {
-        List<String> destinations = new ArrayList<>();
+        public List<String> getAllDestinationByBudget(int budget) {
+/*             Reservation reservation=new Reservation();
+ */        List<String> destinations = new ArrayList<>();
         List<Camping> allCampings = (List<Camping>) camprepo.findAll(); // Récupérer tous les campings depuis le
                                                                         // repository
         for (Camping camp : allCampings) {
-            if (budget == Integer.parseInt(camp.getPrixCamping()) || budget < Integer.parseInt(camp.getPrixCamping())) {
+            if (budget <= Integer.parseInt(camp.getPrixCamping()) /* || budget < Integer.parseInt(camp.getPrixCamping()) */) {
                 destinations.add(camp.getDestination());
                 destinations.add(camp.getPrixCamping());
                 destinations.add(camp.getDescription());
                 destinations.add(camp.getStatus()) ;
-            }
+/*                 reservation.setBudget(String.valueOf(budget));
+ */            }
         }
 
+/*         reservrepo.save(reservation);
+ */
         return destinations;
     }
 

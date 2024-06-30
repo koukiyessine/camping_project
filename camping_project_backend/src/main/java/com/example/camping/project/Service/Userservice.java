@@ -75,6 +75,12 @@ public class Userservice implements IUserservice {
     public List<User> getalluserbyname(String ch) {
       return userrep.findBynom(ch);
     }
+        
 
+    @Override
+    public int getnombreuserdispo(){
+       return (int) userrep.count();
+    }
+            
 
 }

@@ -25,10 +25,10 @@ public class CampingController {
 
    @PostMapping("/addCamping")
    public Camping addCamping(@RequestBody Camping c, @PathParam("id_Avis") int id_Avis,
-         @PathParam("id_guide") int id_guide, @PathParam("id_reservation") int id_reservation,
+         @PathParam("id_guide") int id_guide,
          @PathParam("id_activite") int id_activite,
          @PathParam("id_mtrans") int id_mtrans, @PathParam("id_user") int id_user) {
-      return campserv.addCamping(c, id_Avis, id_guide, id_reservation, id_activite, id_mtrans, id_user);
+      return campserv.addCamping(c, id_Avis, id_guide, id_activite, id_mtrans, id_user);
    }
 
    @GetMapping("/getallCamping")
@@ -42,8 +42,8 @@ public class CampingController {
    }
 
    @GetMapping("/getallCampingbydestination/{ch}")
-   public List<Camping> getallCampingbydestination(@PathVariable String ch) {
-      return campserv.getallCampingbydestination(ch);
+   public String getAllCampingByDestination(@PathVariable("ch") String ch) {
+      return campserv.getAllCampingByDestination(ch);
    }
 
    /*
@@ -53,5 +53,10 @@ public class CampingController {
     * return campserv.addusercamping(cp, id_user);
     * }
     */
+
+    @GetMapping("/getnombreCampingdispo")
+    public int getnombreCampingdispo(){
+         return campserv.getnombreCampingdispo() ;
+    }
 
 }

@@ -45,5 +45,9 @@ public class Avisservice implements IAvisservice {
         return avisrepo.save(avs);
 
     }
-
+       
+    @Override
+    public int getnombreAvisdispo(){
+       return (int) avisrepo.count();
+    }
 }

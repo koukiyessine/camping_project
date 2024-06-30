@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.example.camping.project.Entities.Avis;
@@ -44,6 +43,10 @@ public class Aviscontroller {
    return avisserv.updateAvis(Avis, id_avis);
   }
 
+  @GetMapping("/getnombreAvisdispo")
+  public int getnombreAvisdispo() {
+    return avisserv.getnombreAvisdispo() ;
+  }
 
   
 

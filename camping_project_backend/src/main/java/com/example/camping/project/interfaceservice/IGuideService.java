@@ -10,8 +10,12 @@ public interface IGuideService {
 
     public List<Guide> getallGuide();
 
-    public List<Guide> getallGuidebynomGuide(String ch);
-    
+/*     public List<Guide> getallGuidebynomGuide(String ch);
+ */    
     public Guide updateGuide(Guide guide, int id_Guide);
+
+    public String getallGuidebynomGuide(String ch) ;
+    public int getnombreGuidedispo(); 
+
 
 }

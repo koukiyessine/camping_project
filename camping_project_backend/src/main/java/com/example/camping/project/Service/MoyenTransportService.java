@@ -1,5 +1,7 @@
 package com.example.camping.project.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,15 @@ public class MoyenTransportService implements IMoyenTransportService {
     @Override
     public void deleteMoyenTransport(MoyenTransport mt) {
         moyentransrep.delete(mt);
+    }
+
+    @Override
+    public List<MoyenTransport> getallmoyentrans() {
+     return (List<MoyenTransport>) moyentransrep.findAll();
+    }
+
+    @Override
+    public int getnombredemoyentransdispo() {
+       return (int) moyentransrep.count();
     }
 }

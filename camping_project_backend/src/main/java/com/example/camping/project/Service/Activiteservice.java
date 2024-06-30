@@ -5,6 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.example.camping.project.Entities.Activite;
+import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Repository.ActiviteRepository;
 import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.IActiviteservice;
@@ -45,7 +46,6 @@ public class Activiteservice implements IActiviteservice{
 
             actrep.save(ac);
             return ac;
-
         }
 
 
@@ -53,7 +53,22 @@ public class Activiteservice implements IActiviteservice{
         public void deleteActivite(Activite a) {
             actrep.delete(a);
         }
- 
+
+        
+            @Override
+    public String  getallActivitebynom(String ch) {
+        StringBuilder ch1 = new StringBuilder();  // Initialisation de StringBuilder
+        List<Activite> Activites = actrep.findBynomStartingWith(ch);  // Trouver les campings dont la destination commence par `ch`
+        
+        for (Activite  activite : Activites) {
+        ch1.append(activite.getNom()).append(": ");  // Concaténer chaque destination séparée par une virgule et un espace
+        ch1.append(activite.getPrix_activite()).append("$"+"\n");  // Concaténer chaque destination séparée par une virgule et un espace
+  
+    }
+    
+    
+        return ch1.toString();  // Retourner la chaîne de caractères
+    }
 
         @Override
         public List<Activite> getallActivite() {
@@ -61,11 +76,11 @@ public class Activiteservice implements IActiviteservice{
         }
 
 
-        @Override
+/*         @Override
         public List<Activite> getallActivitebynom(String ch) {
 
             return actrep.findBynom(ch);
-        }
+        } */
 
 
     @Override
@@ -121,7 +136,10 @@ public class Activiteservice implements IActiviteservice{
     }
 
         
-
+    @Override
+    public int getnombreActivitedispo(){
+       return (int) actrep.count();
+    }
             
                 
 

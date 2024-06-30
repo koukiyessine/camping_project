@@ -20,11 +20,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Camping {
 
     @ManyToOne
@@ -36,8 +40,12 @@ public class Camping {
     private Avis avis;
 
     @ManyToOne
-    @JoinColumn(name = "id_reservation")
-    private Reservation reservation;
+    @JoinColumn(name = "id_user")
+    private User user;
+
+    @OneToMany(mappedBy = "camping", cascade = CascadeType.ALL, orphanRemoval = true)
+       @JsonIgnore
+    private List<Reservation> listreservation;
 
     @ManyToOne
     @JoinColumn(name = "id_activite")
