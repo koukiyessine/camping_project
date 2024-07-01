@@ -33,15 +33,11 @@ public class Activitecontroller {
     return actserv.updateActivite(activ, id_activite);
   }
 
-  @DeleteMapping("/deleteActivite/{a}")
-  public void deleteActivite(@PathVariable Activite a) {
-    actserv.deleteActivite(a);
+  @DeleteMapping("/deleteActivite/{id}")
+  public void deleteActivite(@PathVariable int id) {
+    actserv.deleteActivite(id);
   }
 
-  @DeleteMapping("/deleteActivitefile/{id}")
-  public void deleteActivitefile(@PathVariable int id) {
-    actserv.deleteActivitefile(id);
-  }
 
   @GetMapping("/getallActivite")
   public List<Activite> getallActivite() {
