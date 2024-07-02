@@ -23,7 +23,7 @@ public class Userservice implements IUserservice {
     public User adduser(@Valid User u) {
        return userrep.save(u);
     }
-
+/* 
     @Override
     public String adduserwihconf(@Valid User u){
          String ch="";
@@ -33,7 +33,7 @@ public class Userservice implements IUserservice {
             ch="confirmed password is wrong ! " ;
          }
         return ch;
-    }
+    } */
 
     @Override
     public String adduserwithexistence(@Valid User u) {
@@ -56,7 +56,6 @@ public class Userservice implements IUserservice {
         us.setPrenom(user.getPrenom());
         us.setLogin(user.getLogin());
         us.setPassword(user.getPassword());
-        us.setConfpassword(user.getConfpassword());
         userrep.save(us);
         return us;
     }

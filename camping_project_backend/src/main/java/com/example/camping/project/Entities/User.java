@@ -1,6 +1,7 @@
 package com.example.camping.project.Entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+
+@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -65,9 +68,6 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     @Pattern(regexp = "[A-Za-z0-9!@#$%^&*()_+{}|:;'<>?.,~-]+")
     private String password;
-
-    @Pattern(regexp = "[A-Za-z0-9!@#$%^&*()_+{}|:;'<>?.,~-]+")
-    private String confpassword;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

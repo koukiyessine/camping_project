@@ -27,10 +27,10 @@ Userservice userserv;
         return userserv.adduser(u);
     }
 
-    @PostMapping("/adduserbyconf")
+/*     @PostMapping("/adduserbyconf")
     public String adduserwihconf(@RequestBody User u){
         return userserv.adduserwihconf(u) ;
-    }
+    } */
 
     @PostMapping("/adduserwithexistence")
     public String adduserwithexistence(@RequestBody User u){
