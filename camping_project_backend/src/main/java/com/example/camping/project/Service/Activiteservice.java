@@ -1,14 +1,18 @@
 package com.example.camping.project.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 import com.example.camping.project.Entities.Activite;
 import com.example.camping.project.Repository.ActiviteRepository;
 import com.example.camping.project.Repository.CampingRepository;
 import com.example.camping.project.interfaceservice.IActiviteservice;
-import jakarta.transaction.Transactional;
+
+import jakarta.annotation.Resource;
+
+
 
 @Service
 public class Activiteservice implements IActiviteservice{
@@ -30,7 +34,6 @@ public class Activiteservice implements IActiviteservice{
         return actrep.save(A);
     }
 
-
         @Override
         public Activite updateActivite(Activite activ, int id_activite) {
               
@@ -46,7 +49,7 @@ public class Activiteservice implements IActiviteservice{
         }
 
 
-    @Override
+    /* @Override
     @Transactional
     // the deleteContact method executes all its operations (checking for the contact, deleting the file, 
     //and deleting the contact record) within a single transaction.If any part of this process fails, 
@@ -71,8 +74,12 @@ public class Activiteservice implements IActiviteservice{
             // Capture any data access exceptions (e.g., foreign key constraint violations)
             throw new RuntimeException("Failed to delete contact with id: " + id, e);
         }
-    }
+    } */
 
+    @Override
+    public void deleteActivite(Activite actv) {
+     actrep.delete(actv);
+    }
         
             @Override
     public String  getallActivitebynom(String ch) {
@@ -111,29 +118,29 @@ public class Activiteservice implements IActiviteservice{
             
 
 
-    @Override
-    public Activite updateActiviteImage(int id, String filename) {
-        // Check if the ID is null and throw an IllegalArgumentException if it is
-        if (id == 0) {
+    public Activite updateActiviteImage(int id, MultipartFile file) {
+    if (id == 0) {
             throw new IllegalArgumentException("ID cannot be null");
         }
-      
-        // Retrieve the activite by ID, throw an EntityNotFoundException if the activite
-        // is not found
-        Activite activite = actrep.findById(id).get();
 
-        // Check if the activite already has an image
+        Activite activite = actrep.findById(id) 
+                .orElseThrow(() -> new RuntimeException("actrep not found with id " + id));
+
+        String filename = filesStorageService.save(file);
+
         if (activite.getPhoto() == null) {
-            // If the activite does not have an image, set the new image
-            activite.setPhoto(filename);
-        } else {
-            // If the activite already has an image, delete the old image
-            this.filesStorageService.delete(activite.getPhoto());
-            // Set the new image
-            activite.setPhoto(filename) ;        }
-        // Save and return the updated activite in the repository
+            filesStorageService.delete(activite.getPhoto());
+        }
+
+        activite.setPhoto(filename);
         return actrep.save(activite);
     }
 
 
+    public Resource loadFile(String filename) {
+        
+        return (Resource) filesStorageService.load(filename);
+    }
+
 }
+

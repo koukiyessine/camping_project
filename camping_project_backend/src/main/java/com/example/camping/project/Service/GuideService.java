@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.camping.project.Entities.Camping;
 import com.example.camping.project.Entities.Guide;
 import com.example.camping.project.Repository.GuideRepository;
 import com.example.camping.project.interfaceservice.IGuideService;
