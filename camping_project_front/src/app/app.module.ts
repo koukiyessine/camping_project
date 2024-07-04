@@ -14,6 +14,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { TopDestinationsComponent } from './components/top-destinations/top-destinations.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BaseURL } from './shared/baseurl';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: 'BaseURL', useValue: BaseURL
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

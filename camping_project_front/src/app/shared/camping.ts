@@ -3,21 +3,17 @@ export class Camping {
     nom: string;
     adresse: string;
     description: string;
-    budget: number;
+    prix_camping: number;
     dateDebut: Date;
-    dateFin: Date;
-    trancheAge: number;
     statut: string;
-    constructor(idCamping: number, nom: string, adresse: string, description: string, budget: number,
-        dateDebut: Date, dateFin: Date, trancheAge: number, statut: string) {
+    constructor(idCamping: number, nom: string, adresse: string, description: string, prix_camping: number,
+        dateDebut: Date, statut: string) {
         this.idCamping = idCamping;
         this.nom = nom;
         this.adresse = adresse;
         this.description = description;
-        this.budget = budget;
+        this.prix_camping = prix_camping;
         this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.trancheAge = trancheAge;
         this.statut = statut
     }
 }
