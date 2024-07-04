@@ -21,6 +21,7 @@ import com.example.camping.project.exception.DuplicateUserException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

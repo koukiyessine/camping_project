@@ -34,7 +34,7 @@ public class Userservice implements IUserservice {
          }
         return ch;
     } */
-
+/* 
     @Override
     public String adduserwithexistence(@Valid User u) {
         String ch="";
@@ -58,7 +58,7 @@ public class Userservice implements IUserservice {
         us.setPassword(user.getPassword());
         userrep.save(us);
         return us;
-    }
+    } */
 
     @Override
     public void deleteuser(User u) {

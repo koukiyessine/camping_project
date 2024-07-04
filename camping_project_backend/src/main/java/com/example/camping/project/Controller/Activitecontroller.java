@@ -21,20 +21,19 @@ import com.example.camping.project.Service.Activiteservice;
 import jakarta.validation.Valid;
 
 @RestController
-@PreAuthorize("hasAnyRole('ADMIN','USER')")
 public class Activitecontroller {
 
   @Autowired
   Activiteservice actserv;
 
   @PostMapping("/addActivite")
-  @PreAuthorize("hasAuthority('WRITE_PRIVILEGE') and hasRole('ADMIN')")
+   @PreAuthorize("hasAuthority('WRITE_PRIVILEGE') and hasRole('ADMIN')")
   public Activite addActivite(@RequestBody Activite A) {
     return actserv.addActivite(A);
   }
 
   @PutMapping("/updateActivite/{id}")
-  @PreAuthorize("hasAuthority('UPDATE_PRIVILEGE') and hasRole('ADMIN')")
+  @PreAuthorize("hasAuthority('UPDATE_PRIVILEGE') and hasRole('ADMIN','USER')")
   public Activite updateActivite(@Valid @RequestBody Activite activ, @PathVariable("id") int id_activite) {
     return actserv.updateActivite(activ, id_activite);
   }

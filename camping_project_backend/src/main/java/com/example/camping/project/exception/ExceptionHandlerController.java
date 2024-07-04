@@ -19,8 +19,7 @@ public class ExceptionHandlerController {
     @ExceptionHandler(DuplicateUserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ResponseEntity<ErrorResponse> handleDuplicateContactException(DuplicateUserException e,
-            WebRequest request) {
+    public ResponseEntity<ErrorResponse> handleDuplicateContactException(DuplicateUserException e, WebRequest request) {
         final ErrorResponse errorResponse = ErrorResponse.builder()
                 .timestamp(Instant.now())
                 .error("Duplicate Contact")
@@ -45,7 +44,6 @@ public class ExceptionHandlerController {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    // Any Other exception
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleException(Exception e, WebRequest request) {
@@ -53,12 +51,12 @@ public class ExceptionHandlerController {
                 .timestamp(Instant.now())
                 .error("Internal Server Error")
                 .status(HttpStatus.BAD_REQUEST.value())
-                .message(e.getMessage()+e.getClass().getName())
+                .message(e.getMessage() + e.getClass().getName())
                 .path(request.getDescription(false))
                 .build();
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
-    // 403 error 
+
     @ExceptionHandler(AuthorizationDeniedException.class)
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleAuthorizationDeniedException(AuthorizationDeniedException e, WebRequest request) {
@@ -70,20 +68,5 @@ public class ExceptionHandlerController {
                 .path(request.getDescription(false))
                 .build();
         return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
-    }
-
-    
-    @ExceptionHandler(DuplicateUserException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ResponseEntity<ErrorResponse> HandleDuplicateUserException(DuplicateUserException e, WebRequest request) {
-        final ErrorResponse errorResponse = ErrorResponse.builder()
-                .timestamp(Instant.now())
-                .error("Duplicate User")
-                .status(HttpStatus.BAD_REQUEST.value())
-                .message(e.getMessage())
-                .path(request.getDescription(false))
-                .build();
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

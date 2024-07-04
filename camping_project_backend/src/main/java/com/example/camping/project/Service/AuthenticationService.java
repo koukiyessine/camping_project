@@ -2,12 +2,15 @@ package com.example.camping.project.Service;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
 import com.example.camping.project.Entities.User;
 import com.example.camping.project.Repository.UserRepository;
 import com.example.camping.project.dto.AuthenticationUserDTO;
 import com.example.camping.project.exception.DuplicateUserException;
 import com.example.camping.project.interfaceservice.IAuthenticationService;
 
+@Service
 public class AuthenticationService implements IAuthenticationService{
 
       // Repository to handle User entity persistence
