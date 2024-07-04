@@ -1,6 +1,7 @@
 package com.example.camping.project.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,8 @@ public interface UserRepository extends CrudRepository<User, Integer>{
     boolean existsBynom(String nom);
 
     List<User> findBynom(String ch);
+
+    Optional<User> findBylogin(String username);
 
 
     

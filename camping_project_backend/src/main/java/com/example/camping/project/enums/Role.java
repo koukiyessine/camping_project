@@ -31,3 +31,4 @@ public enum Role {
     return authorities;
  }
 }
+
